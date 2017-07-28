@@ -1,0 +1,40 @@
+driver:
+  name: vagrant
+  synced_folders:
+    - ['spec/fixtures/manifests', '/opt/puppet/manifests']
+
+provisioner:
+  name: puppet_apply
+  require_chef_for_busser: false
+  manifests_path: spec/fixtures/manifests
+  require_puppet_collections: true
+  require_puppet_repo: false
+
+verifier:
+  ruby_bindir: '/opt/puppetlabs/puppet/bin'
+
+platforms:
+  - name: centos-6.9
+  - name: centos-7.3
+  - name: amazonlinux-2017.03
+    driver:
+      name: ec2
+      image_id: ami-6df1e514
+      aws_ssh_key_id: test-kitchen
+      region: us-west-2
+      availability_zone: a
+      instance_type: t2.large
+      associate_public_ip: true
+      interface: dns
+    transport:
+      username: ec2-user
+      ssh_key: ~/.ssh/id_rsa
+    provisioner:
+      puppet_yum_collections_repo: http://yum.puppetlabs.com/puppetlabs-release-pc1-el-6.noarch.rpm
+  - name: ubuntu-14.04
+  - name: ubuntu-16.04
+
+suites:
+  - name: default
+    provisioner:
+      manifest: site.pp

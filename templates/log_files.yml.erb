@@ -1,0 +1,37 @@
+<%
+@files = @files.map do |file|
+  if file.is_a?(Hash)
+    { 'path' => file['path'], 'tag' => file['tag'] }
+  else
+    file
+  end
+end
+%>
+<%= { 'files' => @files }.to_yaml.sub("---\n", '') %>
+
+<% if !@hostname.nil? -%>
+hostname: <%= @hostname %>
+<% end -%>
+
+<% if !@new_file_check_interval.nil? -%>
+new_file_check_interval: <%= @new_file_check_interval %>
+<% end -%>
+
+<% if !@exclude_files.nil? -%>
+exclude_files:
+  <% @exclude_files.each do |file| -%>
+  - <%= file %>
+  <% end %>
+<% end -%>
+
+<% if !@exclude_patterns.nil? -%>
+exclude_patterns:
+  <% @exclude_patterns.each do |pattern| -%>
+  - <%= pattern %>
+  <% end %>
+<% end -%>
+
+destination:
+  host: <%= @destination_host %>
+  port: <%= @destination_port %>
+  protocol: <%= @destination_protocol %>

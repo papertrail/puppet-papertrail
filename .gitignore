@@ -1,0 +1,6 @@
+.tmp/
+modules/
+.kitchen/
+.librarian/
+pkg/
+Puppetfile.lock

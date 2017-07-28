@@ -1,0 +1,31 @@
+{
+  "name": "papertrail-papertrail",
+  "version": "1.0.0",
+  "author": "Papertrail",
+  "license": "MIT",
+  "summary": "Install and configure Papertrail's remote_syslog2",
+  "source": "https://github.com/papertrail/puppet-papertrail",
+  "project_page": "https://forge.puppetlabs.com/papertrail/papertrail",
+  "issues_url": "https://github.com/papertrail/puppet-papertrail/issues",
+  "tags": ["syslog", "logging"],
+  "operatingsystem_support": [
+    {
+      "operatingsystem":"RedHat",
+      "operatingsystemrelease":[ "7", "6" ]
+    },
+    {
+      "operatingsystem":"Amazon Linux",
+      "operatingsystemrelease":[ "2017.03" ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [ "16.04", "14.04" ]
+    }
+   ],
+  "dependencies": [
+    { "name": "puppetlabs/stdlib" },
+    { "name": "puppetlabs/apt" },
+    { "name": "lwf/remote_file" },
+    { "name": "stahnma/epel" }
+  ]
+}
