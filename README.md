@@ -12,7 +12,7 @@
 
 ## Description
 
-This module configures the Papertrail [remote_syslog2](https://github.com/papertrail/remote_syslog2) agent. If you want to configure `rsyslog` for use with Papertrail, check out the [documentation on the Papertrail website](http://help.papertrailapp.com/kb/configuration/configuring-remote-syslog-from-unixlinux-and-bsdos-x/).
+This module configures the Papertrail [remote_syslog2](https://github.com/papertrail/remote_syslog2) agent. To configure `rsyslog` for use with Papertrail, check out the [Papertrail documentation](http://help.papertrailapp.com/kb/configuration/configuring-remote-syslog-from-unixlinux-and-bsdos-x/).
 
 ## Setup
 
@@ -26,8 +26,8 @@ Set the parameters `$papertrail::destination_host`, `$papertrail::destination_po
 
 ```ruby
 class {'papertrail':
-  destination_host => 'YOUR-HOST-HERE',
-  destination_port => YOUR-PORT-HERE,
+  destination_host => 'logsN.papertrailapp.com',
+  destination_port => XXXXX,
   files            => ['/tmp/test.log', '/srv/foo.txt', '/var/log/*.bar']
 }
 ```
@@ -53,7 +53,7 @@ This module only has one manifest, which does all setup and configuration. There
     }
   ```
 
-  If you want to tag a file/path, the structure is slightly different:
+  To tag a file/path, the structure is slightly different:
   ```ruby
     class {'papertrail':
       files => [
@@ -109,15 +109,15 @@ This module only has one manifest, which does all setup and configuration. There
 
 - `$papertrail::destination_host`, `$papertrail::destination_port`, & `$papertrail::destination_protocol`
 
-  **Type:** String (except `$destination_port, which is **Integer**)
+  **Type:** String (except `$destination_port`, which is **Integer**)
 
-  The Papertrail host, port, and protocol for sending your logs to. These are required. Destination and port default to empty, while Protocol defaults to `tls`.
+  The Papertrail host and port to send logs to, and the protocol to use. These are required. Destination and port default to empty, while Protocol defaults to `tls`.
 
   Example:
   ```ruby
     class {'papertrail':
-      destination_host     => 'YOUR-HOST-HERE',
-      destination_port     => 514,
+      destination_host     => 'logsN.papertrailapp.com',
+      destination_port     => XXXXX,
       destination_protocol => 'tls'
     }
   ```
@@ -132,6 +132,32 @@ This module only has one manifest, which does all setup and configuration. There
   ```ruby
     class {'papertrail':
       new_file_check_interval => 30
+    }
+  ```
+
+- `$papertrail::severity`
+
+  **Type:** String
+
+  Overrides the default `remote_syslog2` severity level.
+
+  Example:
+  ```ruby
+    class {'papertrail':
+      severity => 'warn'
+    }
+  ```
+
+- `$papertrail::facility`
+
+  **Type:** String
+
+  Overrides the default `remote_syslog2` facility.
+
+  Example:
+  ```ruby
+    class {'papertrail':
+      facility => 'local7'
     }
   ```
 
@@ -163,7 +189,7 @@ Debian 9 is currently unsupported due to [upstream issues](https://tickets.puppe
 
 ### Supported Puppet Versions
 
-This module has been tested on Puppet 5, but should work on Puppet 4.x.
+This module has been tested on Puppet 4.x and 5.x and 4.x.
 
 ## Development
 

@@ -31,6 +31,14 @@ exclude_patterns:
   <% end %>
 <% end -%>
 
+<% if !@facility.nil? -%>
+facility: <%= @facility %>
+<% end -%>
+
+<% if !@severity.nil? -%>
+severity: <%= @severity %>
+<% end -%>
+
 destination:
   host: <%= @destination_host %>
   port: <%= @destination_port %>

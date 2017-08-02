@@ -11,6 +11,8 @@ node default {
     ],
     hostname                => 'my-super-awesome-hostname',
     exclude_patterns        => ['\d+ things'],
-    new_file_check_interval => 30
+    new_file_check_interval => 30,
+    severity                => 'warn',
+    facility                => 'local7'
   }
 }

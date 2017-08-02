@@ -8,6 +8,8 @@ class papertrail (
   String $destination_host = undef,
   String $destination_protocol = 'tls',
   Optional[Integer] $new_file_check_interval = undef,
+  Optional[String] $facility = undef,
+  Optional[String] $severity = undef,
   String $version = '0.19'
 ) {
 

@@ -17,19 +17,20 @@ end
 
 describe file('/etc/log_files.yml') do
   it { should exist }
-  its(:content_as_yaml) do
+  its(:content_as_yaml) {
     should include(
-      'files' => ['/tmp/test.log', '/srv/foo.txt', '/var/log/*.bar',
-                  include('path' => '/srv/foo.txt', 'tag' => 'foo_file')],
+      'files' => ['/tmp/test.log', '/srv/foo.txt', '/var/log/*.bar', include('path' => '/srv/foo.txt', 'tag' => 'foo_file')],
       'exclude_files' => ['/tmp/exlude.log', '/srv/dont-include.log', '/var/log/skip-me.log'],
-      # 'exclude_patterns' => ["\d+ things"],
+#      'exclude_patterns' => ["\d+ things"],
       'hostname' => 'my-super-awesome-hostname',
       'destination' => include(
         'host' => 'testhost.papertrail',
         'port' => 6500,
         'protocol' => 'tls'
       ),
-      'new_file_check_interval' => 30
+      'new_file_check_interval' => 30,
+      'facility' => 'local7',
+      'severity' => 'warn'
     )
-  end
+  }
 end
