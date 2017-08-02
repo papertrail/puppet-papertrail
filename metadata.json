@@ -1,13 +1,13 @@
 {
   "name": "papertrail-papertrail",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Papertrail",
   "license": "MIT",
   "summary": "Install and configure Papertrail's remote_syslog2",
   "source": "https://github.com/papertrail/puppet-papertrail",
   "project_page": "https://github.com/papertrail/puppet-papertrail",
   "issues_url": "https://github.com/papertrail/puppet-papertrail/issues",
-  "tags": ["syslog", "logging"],
+  "tags": ["syslog", "logging", "papertrail", "remote_syslog2"],
   "operatingsystem_support": [
     {
       "operatingsystem":"RedHat",
