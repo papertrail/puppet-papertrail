@@ -189,7 +189,7 @@ Debian 9 is currently unsupported due to [upstream issues](https://tickets.puppe
 
 ### Supported Puppet Versions
 
-This module has been tested on Puppet 4.x and 5.x and 4.x.
+This module has been tested on Puppet 4.x and 5.x.
 
 ## Development
 
