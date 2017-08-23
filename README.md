@@ -184,8 +184,7 @@ This module only has one manifest, which does all setup and configuration. There
 * Amazon Linux 2017.03
 * Ubuntu 14.04
 * Ubuntu 16.04
-
-Debian 9 is currently unsupported due to [upstream issues](https://tickets.puppetlabs.com/browse/PA-1079).
+* Debian 9
 
 ### Supported Puppet Versions
 

@@ -33,6 +33,9 @@ platforms:
       puppet_yum_collections_repo: http://yum.puppetlabs.com/puppetlabs-release-pc1-el-6.noarch.rpm
   - name: ubuntu-14.04
   - name: ubuntu-16.04
+  - name: debian-9.0
+    provisioner:
+      puppet_apt_collections_repo: http://apt.puppetlabs.com/puppetlabs-release-pc1-stretch.deb
 
 suites:
   - name: default
